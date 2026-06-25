@@ -6,12 +6,6 @@ Proyecto desarrollado para la Evaluación Parcial N°3 de SCY1101 (Programación
 
 ## Equipo
 
-| Integrante | Responsabilidad principal |
-|---|---|
-| Persona A | Extracción de datos y diseño de la base propia |
-| Persona B | Transformación, validación y carga (ETL core) |
-| Persona C | Dashboard y containerización |
-
 ## El problema que resolvemos
 
 Steam fija sus precios en dólares estadounidenses, pero el costo real para un usuario chileno depende del tipo de cambio del día. Este proyecto cruza el catálogo histórico de juegos con el valor del dólar en tiempo real para responder: ¿cuánto cuesta hoy un juego en CLP?, ¿qué géneros son más caros?, ¿cómo varía el "costo real" cuando se mueve el tipo de cambio?
