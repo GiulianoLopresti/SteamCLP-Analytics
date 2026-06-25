@@ -1,7 +1,6 @@
 """
 crear_historico.py
 -------------------
-Responsable: Persona A
 
 Inicializa la base de datos propia del proyecto (SQLite). Esta base NO es
 una de las tres fuentes externas: es la fuente transaccional propia del
