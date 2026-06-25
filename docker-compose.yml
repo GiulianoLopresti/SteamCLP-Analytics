@@ -1,0 +1,38 @@
+# docker-compose.yml
+#
+# Orquesta dos servicios:
+#   - etl: corre el pipeline completo (extract -> transform -> load) una vez
+#     y termina. Genera/actualiza data/steamclp.db.
+#   - dashboard: levanta la app Dash y queda corriendo en el puerto 8050.
+#     Depende de que "etl" termine exitosamente antes de arrancar.
+#
+# Uso:
+#   docker compose up --build        -> corre etl, luego levanta el dashboard
+#   docker compose up --build etl    -> corre solo el pipeline ETL
+#
+# La carpeta ./data se monta como volumen compartido entre ambos servicios,
+# para que el dashboard pueda leer la base de datos que genero el ETL.
+
+services:
+  etl:
+    build: .
+    container_name: steamclp-etl
+    command: ["python", "-m", "etl.load"]
+    volumes:
+      - ./data:/app/data
+    environment:
+      - TZ=America/Santiago
+
+  dashboard:
+    build: .
+    container_name: steamclp-dashboard
+    command: ["python", "dashboards/app.py"]
+    ports:
+      - "8050:8050"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - TZ=America/Santiago
+    depends_on:
+      etl:
+        condition: service_completed_successfully

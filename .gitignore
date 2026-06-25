@@ -1,1 +1,18 @@
+# Datos: el CSV de Kaggle y la base de datos generada no se versionan
 data/*.csv
+data/*.db
+
+# Entorno virtual de Python
+.venv/
+venv/
+
+# Cache de Python
+__pycache__/
+*.pyc
+
+# Archivos de configuracion local / IDE
+.vscode/
+.idea/
+
+# Variables de entorno con datos sensibles (si se agregan a futuro)
+.env
