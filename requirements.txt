@@ -2,3 +2,4 @@ pandas
 requests
 dash
 plotly
+pytest
